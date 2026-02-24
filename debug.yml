@@ -1,0 +1,16 @@
+name: Test SSH Connection
+
+on: workflow_dispatch # السطر ده بيخليك تشغل التيست بضغطة زرار يدوياً
+
+jobs:
+  test_conn:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Try to Ping Server via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HUSSIEN1 }}
+          username: ${{ secrets.HUSSIEN2 }}
+          key: ${{ secrets.HUSSIEN3 }}
+          port: 2222
+          script: echo "I can see your laptop! Connection Success ✅"
