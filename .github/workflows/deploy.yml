@@ -15,5 +15,5 @@ jobs:
           host: ${{ secrets.HUSSIEN1 }}
           username: ${{ secrets.HUSSIEN2 }}
           key: ${{ secrets.HUSSIEN3 }}
-          port: 2222
+          port: 22
           script: echo "I can see your laptop! Connection Success ✅"
