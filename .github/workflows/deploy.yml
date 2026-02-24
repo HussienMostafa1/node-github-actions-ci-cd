@@ -1,7 +1,10 @@
 name: Test SSH Connection
 
-on: workflow_dispatch # السطر ده بيخليك تشغل التيست بضغطة زرار يدوياً
-
+#on: workflow_dispatch # السطر ده بيخليك تشغل التيست بضغطة زرار يدوياً
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # السطر ده بيخليك تشغله يدوياً من الموقع
 jobs:
   test_conn:
     runs-on: ubuntu-latest
