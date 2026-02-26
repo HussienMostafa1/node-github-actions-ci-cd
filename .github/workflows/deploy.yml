@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Try to Ping Server via SSH
-        uses: appleboy/ssh-action@main
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HUSSIEN1 }}
           username: ${{ secrets.HUSSIEN2 }}
