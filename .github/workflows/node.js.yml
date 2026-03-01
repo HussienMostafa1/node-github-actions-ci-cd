@@ -29,3 +29,28 @@ jobs:
     - run: npm ci
 #    - run: npm run build --if-present
 #    - run: npm test
+
+deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      # (اختياري) لو عاوز ترفع فولدر الـ build لو مشروعك React
+      # - name: Build Project
+      #   run: |
+      #     npm install
+      #     npm run build
+
+      - name: Copy files to AWS via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HUSSIEN1 }}
+          username: ubuntu # أو ec2-user
+          key: ${{ secrets.HUSSIEN3 }}
+          # Source: إيه الملفات اللي عاوز ترفعها؟ (هنا هنرفع الـ app.js وكل الـ files)
+          source: ".,!node_modules" # بيرفع كل حاجة ماعدا node_modules
+          # Target: هتحط الملفات فين على السيرفر؟
+          target: "/home/ubuntu/app"
+          strip_components: 0 # لا تقم بتغيير هذا
